@@ -38,4 +38,34 @@ extension ExtDate on DateTime {
   DateTime endMonth() {
     return DateTime(year, month + 1, 0);
   }
+
+  bool compare(DateTime data, TypeQuery type){
+  bool output = false;
+  switch (type){
+    case TypeQuery.EQ:
+      if(this.changeDateToString() == data.changeDateToString()) output = true;
+      break; // Aggiungi la dichiarazione break per terminare il caso
+    case TypeQuery.LT:
+      if(this.compareTo(data) < 0) output = true;
+      break;
+    case TypeQuery.LE:
+      if(this.compareTo(data) <= 0) output = true;
+      break;
+    case TypeQuery.GT:
+      if(this.compareTo(data) > 0) output = true;
+      break;
+    case TypeQuery.GE:
+      if(this.compareTo(data) >= 0) output = true;
+      break;
+    case TypeQuery.NE:
+      if(this.changeDateToString() != data.changeDateToString()) output = true;
+      break;
+    default:
+      // Gestione del caso in cui il tipo di query non è supportato
+      throw ArgumentError('Tipo di query non supportato: $type');
+  }
+
+  return output;
+}
+
 }
