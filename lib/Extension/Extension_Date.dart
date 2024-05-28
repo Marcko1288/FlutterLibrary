@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutterlibrary/Enum/Enum_TypeDate.dart';
 import 'package:flutterlibrary/Enum/Enum_TypeFormatDate.dart';
+import 'package:flutterlibrary/Enum/Enum_TypeQuery.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 extension ExtDate on DateTime {
@@ -45,19 +46,19 @@ extension ExtDate on DateTime {
     case TypeQuery.EQ:
       if(this.changeDateToString() == data.changeDateToString()) output = true;
       break; // Aggiungi la dichiarazione break per terminare il caso
-    case TypeQuery.LT:
+    case TypeQuery.MI:
       if(this.compareTo(data) < 0) output = true;
       break;
-    case TypeQuery.LE:
+    case TypeQuery.MIU:
       if(this.compareTo(data) <= 0) output = true;
       break;
-    case TypeQuery.GT:
+    case TypeQuery.MA:
       if(this.compareTo(data) > 0) output = true;
       break;
-    case TypeQuery.GE:
+    case TypeQuery.MAU:
       if(this.compareTo(data) >= 0) output = true;
       break;
-    case TypeQuery.NE:
+    case TypeQuery.NL:
       if(this.changeDateToString() != data.changeDateToString()) output = true;
       break;
     default:
