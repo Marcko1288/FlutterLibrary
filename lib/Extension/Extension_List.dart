@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterlibrary/Enum/Enum_TypeSort.dart';
 
 extension CustomSortExtension<T> on List<T> {
-  void customSort(Comparable Function(T) keySelector, TypeSort typeSort) {
+  void customSort(Comparable Function(T element) keySelector, TypeSort typeSort) {
     sort((a, b) {
       int compareResult = keySelector(a).compareTo(keySelector(b));
       switch (typeSort) {
@@ -14,5 +14,36 @@ extension CustomSortExtension<T> on List<T> {
           return 0;
       }
     });
+  }
+
+  String printListClass() {
+    if (isEmpty) return ''; // Se la lista è vuota, restituisce una stringa vuota
+
+    var firstLine = '';
+    var otherLines = [];
+
+    for (var i = 0; i < length; i++) {
+      var element = this[i]; // Accede all'elemento corrente della lista
+      if (element is Object) {
+        var map = element.toDB();
+        var line = '';
+
+        map.forEach((key, value) {
+          if (i == 0) {
+            // Costruisce la prima linea con i nomi delle chiavi
+            firstLine = firstLine.isNotEmpty ? '$firstLine;$key' : key;
+          }
+          // Costruisce la linea corrente con i valori
+          line = line.isNotEmpty ? '$line;$value' : '$value';
+        });
+
+        // Aggiunge la linea corrente alla lista di altre linee
+        otherLines.add(line);
+      }
+    }
+
+    // Unisce la prima linea e tutte le altre linee con un ritorno a capo
+    String output = '$firstLine\n${otherLines.join('\n')}';
+    return output;
   }
 }
