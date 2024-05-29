@@ -28,7 +28,8 @@ String printListClass() {
 
   List<DBConvertible> list = [];
   this.forEach((element) {
-    list.add(element);
+    DBConvertible value = element;
+    list.add(value);
   });
 
   for (var i = 0; i < list.length; i++) {
