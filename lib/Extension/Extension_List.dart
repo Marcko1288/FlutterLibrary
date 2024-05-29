@@ -26,7 +26,10 @@ String printListClass() {
   var firstLine = '';
   var otherLines = [];
 
-  List<DBConvertible> list = [this];
+  List<DBConvertible> list = [];
+  this.forEach((element) {
+    list.add(element);
+  });
 
   for (var i = 0; i < list.length; i++) {
     var element = list[i]; // Accede all'elemento corrente della lista
