@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutterlibrary/Enum/Enum_TypeSort.dart';
 
-extension CustomSortExtension<T> on List<T> {
+abstract class ToDB {
+  Map<String, dynamic> toDB();
+}
+
+extension ExtensionList<T extends ToDB> on List<T> {
   void customSort(Comparable Function(T element) keySelector, TypeSort typeSort) {
     sort((a, b) {
       int compareResult = keySelector(a).compareTo(keySelector(b));
