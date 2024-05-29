@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterlibrary/Enum/Enum_TypeSort.dart';
 
-abstract class DBConvertible {
-  Map<String, dynamic> toDB();
-}
-
 extension CustomSortExtension<T> on List<T> {
   void customSort(Comparable Function(T element) keySelector, TypeSort typeSort) {
     sort((a, b) {
@@ -26,14 +22,8 @@ String printListClass() {
   var firstLine = '';
   var otherLines = [];
 
-  List<DBConvertible> list = [];
-  this.forEach((element) {
-    DBConvertible value = element;
-    list.add(value);
-  });
-
-  for (var i = 0; i < list.length; i++) {
-    var element = list[i]; // Accede all'elemento corrente della lista
+  for (var i = 0; i < length; i++) {
+    var element = this[i]; // Accede all'elemento corrente della lista
     var map = element.toDB();
     var line = '';
 
