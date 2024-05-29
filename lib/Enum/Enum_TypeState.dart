@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 ///
 /// R --> Read
 
-enum TypeDate {
+enum TypeState {
   I,
   M,
   C,
