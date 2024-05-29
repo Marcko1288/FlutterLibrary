@@ -16,14 +16,14 @@ extension CustomSortExtension<T> on List<T> {
     });
   }
 
-String printListClass(List<DBConvertible> list) {
-  if (list.isEmpty) return ''; // Se la lista è vuota, restituisce una stringa vuota
+String printListClass() {
+   if (isEmpty) return ''; // Se la lista è vuota, restituisce una stringa vuota
 
   var firstLine = '';
   var otherLines = [];
 
-  for (var i = 0; i < list.length; i++) {
-    var element = list[i]; // Accede all'elemento corrente della lista
+  for (var i = 0; i < length; i++) {
+    var element = this[i]; // Accede all'elemento corrente della lista
     var map = element.toDB();
     var line = '';
 
