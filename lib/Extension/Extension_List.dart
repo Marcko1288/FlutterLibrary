@@ -16,34 +16,36 @@ extension CustomSortExtension<T> on List<T> {
     });
   }
 
-  String printListClass() {
-    if (isEmpty) return ''; // Se la lista è vuota, restituisce una stringa vuota
+String printListClass(List<DBConvertible> list) {
+  if (list.isEmpty) return ''; // Se la lista è vuota, restituisce una stringa vuota
 
-    var firstLine = '';
-    var otherLines = [];
+  var firstLine = '';
+  var otherLines = [];
 
-    for (var i = 0; i < length; i++) {
-      var element = this[i]; // Accede all'elemento corrente della lista
-      if (element is Object) {
-        var map = element.toDB();
-        var line = '';
+  for (var i = 0; i < list.length; i++) {
+    var element = list[i]; // Accede all'elemento corrente della lista
+    var map = element.toDB();
+    var line = '';
 
-        map.forEach((key, value) {
-          if (i == 0) {
-            // Costruisce la prima linea con i nomi delle chiavi
-            firstLine = firstLine.isNotEmpty ? '$firstLine;$key' : key;
-          }
-          // Costruisce la linea corrente con i valori
-          line = line.isNotEmpty ? '$line;$value' : '$value';
-        });
-
-        // Aggiunge la linea corrente alla lista di altre linee
-        otherLines.add(line);
+    map.forEach((key, value) {
+      if (i == 0) {
+        // Costruisce la prima linea con i nomi delle chiavi
+        firstLine = firstLine.isNotEmpty ? '$firstLine;$key' : key;
       }
-    }
+      // Costruisce la linea corrente con i valori
+      line = line.isNotEmpty ? '$line;$value' : '$value';
+    });
 
-    // Unisce la prima linea e tutte le altre linee con un ritorno a capo
-    String output = '$firstLine\n${otherLines.join('\n')}';
-    return output;
+    // Aggiunge la linea corrente alla lista di altre linee
+    otherLines.add(line);
   }
+
+  // Unisce la prima linea e tutte le altre linee con un ritorno a capo
+  String output = '$firstLine\n${otherLines.join('\n')}';
+  return output;
+}
+}
+
+abstract class DBConvertible {
+  Map<String, dynamic> toDB();
 }
