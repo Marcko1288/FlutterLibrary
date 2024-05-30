@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 extension MapExtensions<K, V> on Map<K, V> {
   String convertJsonToString(K key) {
-    return this[key] is String ? this[key] : '';
+    return this[key] is String ? this[key].toString() : '';
   }
 
   DateTime convertJsonToDate(K key) {
@@ -20,7 +20,7 @@ extension MapExtensions<K, V> on Map<K, V> {
 
   double convertJsonToDouble(K key) {
     if (this[key] is double) {
-      return this[key];
+      return this[key].toDouble();
     } else if (this[key] is num) {
       return (this[key] as num).toDouble();
     }
@@ -29,7 +29,7 @@ extension MapExtensions<K, V> on Map<K, V> {
 
   int convertJsonToInt(K key) {
     if (this[key] is int) {
-      return this[key];
+      return this[key].toInt();
     } else if (this[key] is num) {
       return (this[key] as num).toInt();
     }
