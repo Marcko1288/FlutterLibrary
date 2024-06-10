@@ -1,11 +1,8 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:mygesture/1.View/Login/InputDecorationCustom.dart';
 import 'package:flutter/services.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:beumed/Library/Extension_String.dart';
-import 'package:provider/provider.dart';
-
-import '../Class/Master.dart';
-import '../Class/Model/Enum_TypeDecoration.dart';
+import 'package:flutterlibrary/Extension/Extension_String.dart';
 
 class TextFieldCustom extends StatefulWidget {
   TextFieldCustom(
@@ -17,7 +14,7 @@ class TextFieldCustom extends StatefulWidget {
       List<String>? autofill,
       this.keyboardType = TextInputType.text,
       this.enabled = true,
-      this.decoration = TypeDecoration.labolBord,
+      this.decoration = InputDecorationCustom.focusBord,
       List<TypeValidator>? listValidator,
       this.limit_char = 99,
       required this.onStringChanged,
@@ -25,18 +22,38 @@ class TextFieldCustom extends StatefulWidget {
       : this.autofill = autofill ?? [],
         this.listValidator = listValidator ?? [];
 
-  String text_default;              ///Testo da mostrare come sfondo
-  String text_labol;                ///Testo da mostrare sul bordo del campo
-  bool secure;                      ///Mostra/Nascondi il testo digitato
-  TextInputAction actionText;       ///L'azione da effettuare premendo il tasto INVIO
-  List<String> autofill;            ///Autocompletamento
-  TextInputType keyboardType;       ///Tipologia di tastiera da mostrare
-  bool enabled;                     ///Attiva/Disattiva il TextField
-  TypeDecoration decoration;        ///Determina Decorazione Bordi
+  String text_default;
 
-  List<TypeValidator> listValidator;  ///La lista delle validazioni da effetture
+  ///Testo da mostrare come sfondo
+  String text_labol;
 
-  int limit_char;       ///Limite dei caratteri all'interno della TextField
+  ///Testo da mostrare sul bordo del campo
+  bool secure;
+
+  ///Mostra/Nascondi il testo digitato
+  TextInputAction actionText;
+
+  ///L'azione da effettuare premendo il tasto INVIO
+  List<String> autofill;
+
+  ///Autocompletamento
+  TextInputType keyboardType;
+
+  ///Tipologia di tastiera da mostrare
+  bool enabled;
+
+  ///Attiva/Disattiva il TextField
+  InputDecorationCustom decoration;
+
+  ///Determina Decorazione Bordi
+
+  List<TypeValidator> listValidator;
+
+  ///La lista delle validazioni da effetture
+
+  int limit_char;
+
+  ///Limite dei caratteri all'interno della TextField
 
   final ValueChanged<String> onStringChanged;
   final ValueChanged<String>? onValidator;
@@ -48,9 +65,6 @@ class TextFieldCustom extends StatefulWidget {
 class _TextFieldCustomState extends State<TextFieldCustom> {
   @override
   Widget build(BuildContext context) {
-    var master = Provider.of<Master>(context, listen: false);
-    var size = MediaQuery.of(context).size;
-
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: TextFormField(
@@ -70,14 +84,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
           });
         },
         validator: FormBuilderValidators.compose([
-          for (var element in widget.listValidator)
-            element == TypeValidator.cf
-                ? (valid) =>
-                    valid.toString().isCF ? null : "Codice Fiscele non valido!"
-                : element == TypeValidator.piva
-                    ? (valid) =>
-                        valid.toString().isPIVA ? null : "Partita Iva non valida!"
-                    : element.value,
+          for (var element in widget.listValidator) element.value
         ]),
       ),
     );
@@ -121,11 +128,11 @@ extension ExtTypeValidator on TypeValidator {
         return FormBuilderValidators.maxLength(10000,
             errorText: 'Valore troppo grande, inserire un valore più piccolo');
       case TypeValidator.cf:
-        return null; //FormBuilderValidators.cf(errorText: 'Codice Fiscale non valido');
+        return (value) =>
+            value.toString().isCF ? null : "Codice Fiscale non valido!";
       case TypeValidator.piva:
-        return null;
+        return (value) =>
+            value.toString().isPIVA ? null : "Partita Iva non valida!";
     }
   }
 }
-
- */
