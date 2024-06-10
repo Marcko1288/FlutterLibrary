@@ -49,7 +49,7 @@ extension ExtString on String {
   }
   
 /* Funzione che restituisce TRUE se il valore passato rispecchia il formato di PIVA, altrimenti FALSE */
-  bool get isCF {
+  bool get isPIVA {
     final RegExp cfRegExp = RegExp(r'/^[0-9]{11}$/');
     return cfRegExp.hasMatch(this);
   }
