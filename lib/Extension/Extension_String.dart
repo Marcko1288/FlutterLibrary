@@ -43,24 +43,14 @@ extension ExtString on String {
   }
 
   /* Funzione che restituisce TRUE se il valore passato rispecchia il formato del CF, altrimenti FALSE */
-    dynamic get isCF {
-    if (this.isNotEmpty){
-      final cfRegex =
-      //RegExp(r'/^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/');
-      RegExp(r'^([A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1})$|([0-9]{11})$');
-      return cfRegex.hasMatch(this.toUpperCase());
-    }
-    return true;
+  bool get isCF {
+    final RegExp cfRegExp = RegExp(r'^([A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1})$|([0-9]{11})$');
+    return cfRegExp.hasMatch(this.toUpperCase());
   }
-
-  /* Funzione che restituisce TRUE se il valore passato rispecchia il formato di PIVA, altrimenti FALSE */
-  dynamic get isPIVA {
-    if (this.isNotEmpty) {
-    final pivaRegex =
-    RegExp(r'/^[0-9]{11}$/');
-
-    return pivaRegex.hasMatch(this);
-    }
-    return true;
+  
+/* Funzione che restituisce TRUE se il valore passato rispecchia il formato di PIVA, altrimenti FALSE */
+  bool get isCF {
+    final RegExp cfRegExp = RegExp(r'/^[0-9]{11}$/');
+    return cfRegExp.hasMatch(this);
   }
 }
