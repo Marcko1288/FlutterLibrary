@@ -11,8 +11,8 @@ class FireStore {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   CollectionReference<Map<String, dynamic>> dirDB(
-      {required String document, required String value}) {
-    String db = 'Database';
+      {required String db, required String document, required String value}) {
+    //String db = 'Database';
     return _firebaseFirestore.collection(db).doc(document).collection(value);
   }
 
