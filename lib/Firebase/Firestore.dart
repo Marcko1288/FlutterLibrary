@@ -21,7 +21,7 @@ class FireStore {
       required Map<String, dynamic> map}) async {
     var route = patch.doc(map['uid']);
     if (!Uri.base.toString().contains('localhost')) {
-      // await route.set(map).onError((error, stackTrace) => print('$error'));
+       await route.set(map).onError((error, stackTrace) => print('$error'));
     }
   }
 
@@ -30,7 +30,7 @@ class FireStore {
       required Map<String, dynamic> map}) async {
     var route = patch.doc(map['uid']);
     if (!Uri.base.toString().contains('localhost')) {
-      // await route.delete().onError((error, stackTrace) => print('$error'));
+       await route.delete().onError((error, stackTrace) => print('$error'));
     }
   }
 
@@ -40,7 +40,7 @@ class FireStore {
     map['data_modify'] = DateTime.now();
     var route = patch.doc(map['uid']);
     if (!Uri.base.toString().contains('localhost')) {
-      // await route.update(map).onError((error, stackTrace) => print('$error'));
+       await route.update(map).onError((error, stackTrace) => print('$error'));
     }
   }
 
