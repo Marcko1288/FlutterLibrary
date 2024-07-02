@@ -15,9 +15,6 @@ List<DateTime> holidaysIT({required int year_da, required int year_a}) {
     '26/12', //Santo Stefano
   ];
 
-  //int year_da = DateTime.now().year - 5;
-  //int year_a = DateTime.now().year + 10;
-
   for (int year = year_da; year <= year_a; year++) {
     for (String day in day_holiday) {
       holidays.add(DateTime.parse(
