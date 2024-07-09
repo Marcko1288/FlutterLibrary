@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:excel/excel.dart';
 
-Future<List<Map<String, dynamic>>> loadExcelToHive(
+Future<List<Map<String, dynamic>>> loadExcel(
     {bool header = false, required Function(List<Data?>) createRecord}) async {
   List<Map<String, dynamic>> records = [];
 
