@@ -36,3 +36,15 @@ Future<List<Map<String, dynamic>>> loadExcel(
   }
   return records;
 }
+
+/* Esempio di funzione per convertire il record in MAP */
+// Map<String, dynamic> createRecord(List<Data?> row) {
+//   Map<String, dynamic> record = {};
+//   for (int i = 0; i < row.length; i++) {
+//     String column = 'field_$i';
+//     String value =
+//         row[i]?.value.toString() is String ? row[i]!.value.toString() : '';
+//     record[column] = value;
+//   }
+//   return record;
+// }
