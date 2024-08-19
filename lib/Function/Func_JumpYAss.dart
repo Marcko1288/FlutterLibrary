@@ -16,14 +16,13 @@ double dynamicJumpYAss<T>(List<T> array, double Function(T element) getValue) {
   }
 
   // Arrotonda i valori minimo e massimo
-  //var roundedYAxisMaxValue = roundUp(maxV, 2);
-  //var roundedYAxisMinValue = roundUp(minV, 2);
-  maxV.roundUp(2);
-  minV.roundUp(2);
+  var roundedYAxisMaxValue = maxV.roundUp(2); //roundUp(maxV, 2);
+  var roundedYAxisMinValue = minV.roundUp(2); //roundUp(minV, 2);
+  
+ 
 
   // Calcola il valore del salto (stride)
-  //var strideValue = (roundedYAxisMaxValue - roundedYAxisMinValue) / 5.0;
-  var strideValue = (maxV - minV) / 5.0;
+  var strideValue = (roundedYAxisMaxValue - roundedYAxisMinValue) / 5.0;
 
   // Verifica che il valore del salto non sia NaN o zero
   if (strideValue.isNaN || strideValue == 0) {
