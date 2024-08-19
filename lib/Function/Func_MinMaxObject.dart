@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-List<double> getMinMaxValues<T>(List<T> objects, double Function(T) getValue) {
+List<double> getMinMaxValues<T>(List<T> objects, double Function(T element) getValue) {
   if (objects.isEmpty) {
     throw ArgumentError('The list of objects cannot be empty.');
   }
