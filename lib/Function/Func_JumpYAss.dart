@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterlibrary/Extension/Extension_Double.dart';
 
 // Funzione per calcolare il valore del salto
-double dynamicJumpYAss<T>(List<T> array, double Function(T) getValue) {
+double dynamicJumpYAss<T>(List<T> array, double Function(T element) getValue) {
   // Valori predefiniti
   double maxV = 100;
   double minV = 1;
