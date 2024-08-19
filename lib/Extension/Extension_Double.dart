@@ -10,8 +10,8 @@ extension ExtDouble on double {
   }
 
   // Funzione per arrotondare un numero
-  void roundUp(int places) {
+  double roundUp(int places) {
     var factor = pow(10, places);
-    this = (this * factor).ceilToDouble() / factor;
+    return (this * factor).ceilToDouble() / factor;
   }
 }
