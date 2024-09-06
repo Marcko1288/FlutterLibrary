@@ -5,5 +5,4 @@ export 'Enum_TypeExtraction.dart';
 export 'Enum_TypeFormatDate.dart';
 export 'Enum_TypeQuery.dart';
 export 'Enum_TypeSort.dart';
-export 'Enum_TypeState.dart';
 // Aggiungi qui altri widget che desideri esportare
