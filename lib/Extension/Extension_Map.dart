@@ -8,12 +8,14 @@ extension MapExtensions<K, V> on Map<K, V> {
   }
 
   DateTime convertJsonToDate(K key) {
-    if (this[key] is String) {
-      try {
-        return DateTime.parse(this[key] as String);
-      } catch (e) {
-        // Fall back to current date if parsing fails
-      }
+   if (value is Timestamp) {
+        return value.toDate(); // converte Timestamp in DateTime
+      } else if (value is String) {
+        try {
+          return DateTime.parse(value);
+        } catch (e) {
+          // parsing fallito
+        }
     }
     return DateTime.now();
   }
