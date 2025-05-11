@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 extension MapExtensions<K, V> on Map<K, V> {
@@ -8,6 +8,7 @@ extension MapExtensions<K, V> on Map<K, V> {
   }
 
   DateTime convertJsonToDate(K key) {
+    var value = this[key];
    if (value is Timestamp) {
         return value.toDate(); // converte Timestamp in DateTime
       } else if (value is String) {
