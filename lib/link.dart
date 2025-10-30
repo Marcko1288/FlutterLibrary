@@ -22,6 +22,7 @@ export '../Extension/Extension_String.dart';
 // Firebase
 export '../Firebase/Auth.dart';
 export '../Firebase/Firestore.dart';
+export '../Firebase/FireStorage.dart';
 
 
 // Function
@@ -32,4 +33,5 @@ export '../Function/Func_MinMaxObject.dart';
 
 
 // Model View
+
 export '../Model/TextFieldCustom.dart';
