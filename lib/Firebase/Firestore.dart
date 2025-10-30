@@ -8,7 +8,7 @@ import 'Firestore.dart';
 //Installare il package: flutter pub add cloud_firestore
 
 class FireStore {
-  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  //final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   CollectionReference<Map<String, dynamic>> dirDB({
     required String db,
@@ -216,3 +216,4 @@ class FireStore {
 //     }
 //   }
 // }
+
